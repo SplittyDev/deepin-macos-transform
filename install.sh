@@ -1,21 +1,19 @@
 #!/usr/bin/env bash
 
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root."
-  exit
-fi
-
 echo "Welcome to Deepin macOS Transform!"
 echo "Depending on your network quality, this could take a few minutes..."
 
+echo "Please authenticate as root..."
+sudo true
+
 # Update package sources
 echo -n "Updating package sources..."
-apt update >/dev/null 2>&1
+sudo apt update >/dev/null 2>&1
 if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
 
 # Install dependencies
 echo -n "Installing dependencies..."
-apt install -y git >/dev/null 2>&1
+sudo apt install -y git >/dev/null 2>&1
 if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
 
 # Install La Capitaine icon theme
@@ -29,7 +27,7 @@ echo -n "| Configuring icon theme..."
 echo -ne "n\ny\nN\n" | bash ./configure >/dev/null 2>&1 # light icons, dark panel, no distro logo
 if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
 echo -n "| Setting icon theme as default..."
-gsettings set com.deepin.dde.appearance icon-theme "la-capitaine-icon-theme" >/dev/null 2>&1
+sudo gsettings set com.deepin.dde.appearance icon-theme "la-capitaine-icon-theme" >/dev/null 2>&1
 if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
 popd >/dev/null 2>&1
 popd >/dev/null 2>&1
@@ -55,7 +53,7 @@ if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
 
 # Patch Deepin window controls
 echo -n "Patching Deepin window button layout..."
-gsettings set com.deepin.wrap.pantheon.desktop.gala.appearance button-layout "close,minimize,maximize:" >/dev/null 2>&1
+sudo gsettings set com.deepin.wrap.pantheon.desktop.gala.appearance button-layout "close,minimize,maximize:" >/dev/null 2>&1
 if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
 
 echo "That's it! Please log out and in again."
