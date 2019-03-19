@@ -39,7 +39,7 @@ echo "Installing UI theme..."
 mkdir -p $HOME/.macos-transform
 pushd $HOME/.macos-transform
 echo -n "| Cloning repository..."
-git clone git@github.com:vinceliuice/Mojave-gtk-theme.git >/dev/null 2>&1
+git clone https://github.com/vinceliuice/Mojave-gtk-theme.git >/dev/null 2>&1
 if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
 pushd Mojave-gtk-theme
 echo -n "| Installing UI theme..."
