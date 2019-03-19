@@ -2,9 +2,9 @@
 > Transform your DeepinOS experience.
 
 ## What it does
-1. Install the amazing [La Capitaine] icon theme
-2. Install the beautiful [Mojave GTK] theme
-3. Set the deepin and GTK window button layout to macOS
+1. Installs the amazing [La Capitaine] icon theme
+2. Installs the beautiful [Mojave GTK] theme
+3. Sets the window button layout to macOS
 
 ## How to install
 
