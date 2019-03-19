@@ -27,7 +27,7 @@ echo -n "| Configuring icon theme..."
 echo -ne "n\ny\nN\n" | bash ./configure >/dev/null 2>&1 # light icons, dark panel, no distro logo
 if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
 echo -n "| Setting icon theme as default..."
-sudo gsettings set com.deepin.dde.appearance icon-theme "la-capitaine-icon-theme" >/dev/null 2>&1
+gsettings set com.deepin.dde.appearance icon-theme "la-capitaine-icon-theme" >/dev/null 2>&1
 if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
 popd >/dev/null 2>&1
 popd >/dev/null 2>&1
@@ -49,11 +49,9 @@ popd >/dev/null 2>&1
 # Patch GTK3 config
 echo -n "Patching GTK3 configuration..."
 echo -e "[Settings]\ngtk-theme-name=Mojave-dark\ngtk-icon-theme-name=la-capitaine-icon-theme\ngtk-decoration-layout=close,minimize,maximize:menu" > $HOME/.config/gtk-3.0/settings.ini
-if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
 
 # Patch Deepin window controls
 echo -n "Patching Deepin window button layout..."
-sudo gsettings set com.deepin.wrap.pantheon.desktop.gala.appearance button-layout "close,minimize,maximize:" >/dev/null 2>&1
-if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
+gsettings set com.deepin.wrap.pantheon.desktop.gala.appearance button-layout "close,minimize,maximize:"
 
 echo "That's it! Please log out and in again."
