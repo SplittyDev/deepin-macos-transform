@@ -47,11 +47,11 @@ popd >/dev/null 2>&1
 popd >/dev/null 2>&1
 
 # Patch GTK3 config
-echo -n "Patching GTK3 configuration..."
+echo "Patching GTK3 configuration..."
 echo -e "[Settings]\ngtk-theme-name=Mojave-dark\ngtk-icon-theme-name=la-capitaine-icon-theme\ngtk-decoration-layout=close,minimize,maximize:menu" > $HOME/.config/gtk-3.0/settings.ini
 
 # Patch Deepin window controls
-echo -n "Patching Deepin window button layout..."
+echo "Patching Deepin window button layout..."
 gsettings set com.deepin.wrap.pantheon.desktop.gala.appearance button-layout "close,minimize,maximize:"
 
 echo "That's it! Please log out and in again."
