@@ -19,9 +19,11 @@ if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
 # Install La Capitaine icon theme
 echo "Installing icon theme..."
 pushd $HOME/.icons >/dev/null 2>&1
-echo -n "| Cloning repository..."
-git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git >/dev/null 2>&1
-if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
+if [ ! -d "la-capitaine-icon-theme" ]; then
+  echo -n "| Cloning repository..."
+  git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git >/dev/null 2>&1
+  if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
+fi
 pushd la-capitaine-icon-theme >/dev/null 2>&1
 echo -n "| Configuring icon theme..."
 echo -ne "n\ny\nN\n" | bash ./configure >/dev/null 2>&1 # light icons, dark panel, no distro logo
@@ -36,9 +38,11 @@ popd >/dev/null 2>&1
 echo "Installing UI theme..."
 mkdir -p $HOME/.macos-transform >/dev/null 2>&1
 pushd $HOME/.macos-transform >/dev/null 2>&1
-echo -n "| Cloning repository..."
-git clone https://github.com/vinceliuice/Mojave-gtk-theme.git >/dev/null 2>&1
-if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
+if [ ! -d "Mojave-gtk-theme" ]; then
+  echo -n "| Cloning repository..."
+  git clone https://github.com/vinceliuice/Mojave-gtk-theme.git >/dev/null 2>&1
+  if [ $? -eq 0 ]; then echo "OK"; else echo "FAIL"; fi
+fi
 pushd Mojave-gtk-theme >/dev/null 2>&1
 echo -n "| Installing UI theme..."
 bash ./install.sh >/dev/null 2>&1
